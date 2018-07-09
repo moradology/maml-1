@@ -20,7 +20,7 @@ import org.scalatest._
 import scala.reflect._
 
 
-class EvaluationSpec extends FunSpec with Matchers with ExpressionTreeCodec {
+class EvaluationSpec extends FunSpec with Matchers {
 
   implicit def tileIsTileLiteral(tile: Tile): TileLiteral = TileLiteral(tile, RasterExtent(tile, Extent(0, 0, 0, 0)))
 

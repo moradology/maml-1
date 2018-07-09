@@ -1,7 +1,6 @@
 package com.azavea.maml.ast.codec.tree
 
 import com.azavea.maml.ast._
-import ExpressionTreeCodec._
 
 import io.circe._
 import io.circe.syntax._

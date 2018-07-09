@@ -21,11 +21,22 @@ import scala.reflect._
 import java.net.URI
 
 
-class CogSourceSpec extends FunSpec with Matchers with ExpressionTreeCodec {
+class CogSourceSpec extends FunSpec with Matchers {
+  import com.azavea.maml.ast.codec.tree.ExpressionTreeCodec
+  import com.azavea.maml.ast.codec._
+  val parser = new ExpressionTreeCodec
+  parser.addRules(
+    PartialFunction[Json, Decoder.Result[Expression]] { case expr if expr._type == Some("CogSource") => expr.as[CogSource] },
+    PartialFunction[Expression, Json] { case cs@CogSource(_, _, _) => cs.asJson }
+  )
+
   it("Should handle serde for custom cog source") {
     val uri = new URI("http://google.com")
     val ast = Subtraction(List(CogSource(uri, 1, None), IntLiteral(5)))
-    val serialized = ast.asJson
-    val deserialized = serialized.as[Expression]
+    println("TEST1", parser.encode(ast))
+    val serialized = parser(ast)
+    println("TEST2", parser.decode(serialized))
+    parser(serialized)
+    val deserialized = parser.decode(serialized)
   }
 }

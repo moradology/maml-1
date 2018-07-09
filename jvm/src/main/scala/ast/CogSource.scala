@@ -13,9 +13,10 @@ import cats.effect._
 import cats.syntax.all._
 import geotrellis.vector.Extent
 import geotrellis.raster.{IntConstantTile, MultibandTile, NODATA, CellType, Tile, RasterExtent}
-import geotrellis.spark._
+import geotrellis.spark.SpatialKey
 import geotrellis.spark.io._
 import geotrellis.spark.io.s3.{S3ValueReader, S3CollectionLayerReader}
+import io.circe.Decoder.Result
 
 import java.security.InvalidParameterException
 import java.net.URI
