@@ -292,6 +292,12 @@ case class FocalStdDev(children: List[Expression], neighborhood: Neighborhood) e
   def withChildren(newChildren: List[Expression]): Expression = copy(children = newChildren)
 }
 
+case class WeightedOverlay(children: List[Expression], weights: List[Double]) extends Expression("overlay") {
+  assert(children.length == weights.length, "Weighted overlay requires that each expression has a corresponding weight: ${children.length} children is not equal to ${weights.length} weights")
+  def withChildren(newChildren: List[Expression]): Expression = copy(children = newChildren)
+  val kind: MamlKind = MamlKind.Tile
+}
+
 case class IntLit(value: Int) extends Expression("int") with Literal {
   val kind = MamlKind.Int
 }

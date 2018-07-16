@@ -54,6 +54,7 @@ object NaiveInterpreter {
       OpDirectives.xor,
       OpDirectives.masking,
       OpDirectives.atan2,
+      OpDirectives.weightedOverlay,
       UnaryDirectives.sin,
       UnaryDirectives.cos,
       UnaryDirectives.tan,

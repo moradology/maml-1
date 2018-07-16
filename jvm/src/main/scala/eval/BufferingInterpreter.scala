@@ -74,6 +74,7 @@ object BufferingInterpreter {
       ScopedDirective.pure[Xor](OpDirectives.xor),
       ScopedDirective.pure[Masking](OpDirectives.masking),
       ScopedDirective.pure[Atan2](OpDirectives.atan2),
+      ScopedDirective.pure[WeightedOverlay](OpDirectives.weightedOverlay),
       ScopedDirective.pure[Sin](UnaryDirectives.sin),
       ScopedDirective.pure[Cos](UnaryDirectives.cos),
       ScopedDirective.pure[Tan](UnaryDirectives.tan),

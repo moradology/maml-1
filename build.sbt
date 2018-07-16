@@ -75,10 +75,12 @@ val commonSettings = Seq(
     "locationtech-releases" at "https://repo.locationtech.org/content/groups/releases"
   ),
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.7"),
   scalacOptions := Seq(
     "-deprecation",
     "-unchecked",
     "-feature",
+    "-Ypartial-unification",
     "-language:implicitConversions",
     "-language:reflectiveCalls",
     "-language:higherKinds",

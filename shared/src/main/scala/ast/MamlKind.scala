@@ -14,8 +14,8 @@ object MamlKind {
   case object Double extends MamlKind { def repr: String = "double" }
   case object Tile extends MamlKind { def repr: String = "raster" }
   case object Geom extends MamlKind { def repr: String = "geom" }
-  // The bottom type [useful for writing inductive proofs/handling certain classes of failure]
-  case object Nothing extends MamlKind { def repr: String = "nothing" }
+  // useful for writing inductive proofs/handling certain classes of failure
+  case object Void extends MamlKind { def repr: String = "void" }
 
   def fromString(str: String): Option[MamlKind] = Try {
     str match {
@@ -24,7 +24,7 @@ object MamlKind {
       case "double" => MamlKind.Double
       case "raster" => MamlKind.Tile
       case "geom" => MamlKind.Geom
-      case "nothing" => MamlKind.Nothing
+      case "void" => MamlKind.Void
     }
   }.toOption
 

@@ -374,5 +374,17 @@ object OpDirectives {
     })
     Valid(results)
   }
+
+  val weightedOverlay = Directive { case (wo@WeightedOverlay(_, weights), childResults) =>
+    childResults
+      .map(_.as[LazyTile])
+      .zip(weights)
+      .map({ case (validatedTile, weight) =>
+        validatedTile.map({ tile => List(LazyTile.MapDouble(List(tile), { _ * weight })) })
+      }).reduce(_ combine _)
+      .map({ tiles =>
+        TileResult(tiles.reduce({ (lt1: LazyTile, lt2: LazyTile) => LazyTile.DualCombine(List(lt1, lt2), {_ + _}, {_ + _}) }))
+      })
+  }
 }
 
