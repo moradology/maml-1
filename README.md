@@ -74,7 +74,7 @@ function.
 `Interpreter`s are little more than a set of `Directive`s, an ordering
 for their attempted application (earlier listed directives are attempted
 sooner), and a fallback directive (provided by the `Interpreter` and used
-whenever an unrecognized node is encountered. Here's an example capable
+whenever an unrecognized node is encountered). Here's an example capable
 of handling `Addition` (using the above `Directive`) and nothing else:
 
 ```scala
